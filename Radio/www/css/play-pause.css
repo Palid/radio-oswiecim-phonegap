@@ -1,0 +1,43 @@
+
+.audio--controller {
+  background-position: center;
+  width: 256px;
+  height: 256px;
+  position: relative;
+  display: block;
+  text-align: center;
+  background-color: white;
+  border: none;
+  font-size: 250px;
+}
+
+.navbar--date{
+  font-size: 16px;
+}
+
+.center {
+   float: none;
+   margin-left: auto;
+   margin-right: auto;
+   text-align: center;
+}
+
+.center-vertical {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 60px;
+  padding-top:22px;
+  background-color: #F5F5F5;
+}
+
+textarea:focus, input:focus, button:focus{
+    outline: 0;
+}
+

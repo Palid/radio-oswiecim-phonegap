@@ -1,0 +1,20 @@
+{
+  "name": "Radio",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Palid/radio-oswiecim-phonegap",
+  "authors": [
+    "Dariusz Niemczyk <palid@o2.pl>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "moment": "~2.10.3"
+  }
+}

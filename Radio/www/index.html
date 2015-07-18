@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<html>
+  <head>
+    <!--
+    Customize this policy to fit your own app's needs. For more guidance, see:
+    https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+    Some notes:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+    * Enable inline JS: add 'unsafe-inline' to default-src
+    -->
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <!-- <link rel="stylesheet" href="bower_components/material-design-lite/material.min.css"> -->
+    <!-- <script src="bower_components/material-design-lite/material.min.js"></script> -->
+    <link rel="stylesheet" href="bower_components/open-sans-fontface/open-sans.css">
+    <link rel="stylesheet" href="css/play-pause.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-theme-cosmo/cosmo.min.css">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+    <title>Radio Oświęcim</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+          <p class="navbar-text navbar-right pull-right navbar--date">0:00</p>
+        <div class="navbar-header">
+          <img alt="Radio Oświęcim" src="img/logo.png">
+        </div>
+        </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container center center-vertical">
+        <div class="center-vertical">
+          <button class="glyphicon glyphicon-play audio--controller"></button>
+          <h2 class="paragraph--listening">Słuchasz radia Oświęcim już: <span class="date--listening"></span></h2>
+        </div>
+        </div>
+        <footer class="footer center">
+          <div class="container">
+            <a href="http://radiooswiecim.pl/"><p class="text-muted">Dotknij tutaj, aby przejść do strony Radia Oświęcim.</p></a>
+          </div>
+        </footer>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="bower_components/moment/min/moment-with-locales.min.js"></script>
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/player.js"></script>
+      </body>
+    </html>
