@@ -23,9 +23,7 @@
 }
 
 .center-vertical {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
 }
 
 .footer{

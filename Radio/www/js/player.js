@@ -102,6 +102,7 @@
     moment.locale('pl');
     updateDate();
     playAudio(AUDIO_URL);
+    StatusBar.show();
   }
   // $(document).ready(function() {
   //   onDeviceReady();
