@@ -4,6 +4,7 @@
   function onDeviceReady() {
 
     var AUDIO_URL = "http://sluchaj.radiooswiecim.pl:8000/live";
+    var LISTENING_STATUS = "http://radiooswiecim.pl/GetStatus.php";
 
     // Audio player
     var media = {
@@ -17,7 +18,8 @@
     var ui = {
       controller: $('.audio--controller'),
       date: $('.navbar--date'),
-      dateListening: $('.date--listening')
+      dateListening: $('.date--listening'),
+      currentlyListening: $('.currently-listening')
     };
 
     function updateDate() {
@@ -38,6 +40,13 @@
       ui.controller.toggleClass('glyphicon-pause', isPlaying);
       ui.controller.toggleClass('glyphicon-play', !isPlaying);
     };
+
+    function updateCurrentlyListening() {
+      var currentlyListeningUrl = "http://radiooswiecim.pl/GetStatus.php";
+      $.get(currentlyListeningUrl).done(function(resp) {
+        ui.currentlyListening.text(resp);
+      });
+    }
 
     ui.controller.on('click', function(e) {
       e.preventDefault();
@@ -77,11 +86,12 @@
             function(position) {
               if (position > -1) {
                 setAudioPosition(position);
+                updateCurrentlyListening();
               }
             },
             $.noop
           );
-        }, 1000);
+        }, 10000);
       }
     }
 
@@ -102,7 +112,7 @@
     moment.locale('pl');
     updateDate();
     playAudio(AUDIO_URL);
-    StatusBar.show();
+    updateCurrentlyListening();
   }
   // $(document).ready(function() {
   //   onDeviceReady();
