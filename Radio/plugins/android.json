@@ -19,17 +19,30 @@
                         {
                             "xml": "<feature name=\"Media\"><param name=\"android-package\" value=\"org.apache.cordova.media.AudioHandler\" /></feature>",
                             "count": 1
-                        },
-                        {
-                            "xml": "<preference name=\"webView\" value=\"org.crosswalk.engine.XWalkWebViewEngine\" />",
-                            "count": 1
                         }
                     ]
                 }
             },
             "AndroidManifest.xml": {
                 "parents": {
-                    "/*": []
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 2
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.RECORD_AUDIO\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />",
+                            "count": 1
+                        }
+                    ]
                 }
             }
         }
@@ -38,16 +51,12 @@
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "hackerspace.silesia.mobile.radiooswiecim"
         },
-        "org.apache.cordova.media": {
+        "org.apache.cordova.file": {
             "PACKAGE_NAME": "hackerspace.silesia.mobile.radiooswiecim"
         },
-        "cordova-plugin-crosswalk-webview": {
+        "org.apache.cordova.media": {
             "PACKAGE_NAME": "hackerspace.silesia.mobile.radiooswiecim"
         }
     },
-    "dependent_plugins": {
-        "org.apache.cordova.file": {
-            "PACKAGE_NAME": "hackerspace.silesia.mobile.radiooswiecim"
-        }
-    }
+    "dependent_plugins": {}
 }
