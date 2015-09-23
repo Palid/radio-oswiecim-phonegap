@@ -1,19 +1,20 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="hackerspace.silesia.mobile.radiooswiecim" version="0.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Radio Oświęcim</name>
+<widget id="com.pl.lpu24.radio" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Radio LPU24</name>
     <description>
-        Aplikacja Radia Oświęcim.
+        Aplikacja Radia LPU24.
     </description>
     <!-- <author email="" href="http://hs-silesia.pl/"> -->
         <!-- Hackerspace Silesia -->
     <!-- </author> -->
 
-    <author href="http://hs-silesia.pl/">
-        Hackerspace Silesia
+    <author href="http://lpu24.pl/">
+        LPU24
     </author>
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" version="1" />
     <access origin="*" />
+    <alllow-intent href="http://lpu24.pl/radio/*"></alllow-intent>
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <!-- <allow-intent href="tel:*" /> -->
