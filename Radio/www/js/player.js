@@ -1,7 +1,6 @@
 (function(window, document, $, moment) {
   "use strict";
 
-  var canOnline = ("onLine" in window.navigator);
 
   function onDeviceReady() {
 
@@ -26,10 +25,9 @@
     };
 
     function isOnline() {
-      if (!canOnline) {
-        return true;
-      }
-      return window.navigator.onLine;
+      var networkState = window.navigator.connection.type;
+
+      return networkState !== window.Connection.NONE;
     }
 
     function updateDate() {
@@ -49,11 +47,10 @@
       var isPlaying = media.playing;
       ui.controller.toggleClass("glyphicon-pause", isPlaying);
       ui.controller.toggleClass("glyphicon-play", !isPlaying);
-    };
+    }
 
     function updateCurrentlyListening() {
-      var currentlyListeningUrl = "http://radiooswiecim.pl/GetStatus.php";
-      $.get(currentlyListeningUrl).done(function(resp) {
+      $.get(LISTENING_STATUS).done(function(resp) {
         ui.currentlyListening.text(resp);
       });
     }
@@ -87,10 +84,10 @@
       media.timerInterval = null;
     }
 
-    function createAudio(src) {
+    function createAudio() {
       // Create Media object from src
       media.loading = true;
-      media.player = new window.Media(src, onSuccess, onError);
+      media.player = new window.Media(AUDIO_URL, onSuccess, onError);
 
       // Play audio
       media.player.play();
@@ -99,14 +96,16 @@
       updateController();
     }
 
-
     // Play audio
-    function playAudio(src) {
-      if (!isOnline()) {
-        ui.connectionModal.modal();
-      } else {
-        createAudio(src);
-      }
+    function playAudio() {
+      createAudio();
+      updateController();
+
+      window.setTimeout(function() {
+        if (!isOnline()) {
+          ui.connectionModal.modal();
+        }
+      }, 1000);
 
       // Update my_media position every second
       if (!media.timerInterval) {
@@ -132,19 +131,24 @@
       }
     }
 
-    ui.connectionModal.on("hide.bs.modal", function () {
-      createAudio(AUDIO_URL);
+    ui.connectionModal.on("hide.bs.modal", function() {
+      if (!isOnline()) {
+        window.setTimeout(function() {
+          ui.connectionModal.modal();
+        }, 1000);
+      } else {
+        // Play audio
+        media.player.pause();
+        createAudio(AUDIO_URL);
+        updateController();
+      }
     });
 
     moment.locale("pl");
     updateDate();
-    playAudio(AUDIO_URL);
+    playAudio();
     updateCurrentlyListening();
   }
-  // $(document).ready(function() {
-  //   onDeviceReady();
-
-  // });
   document.addEventListener("deviceready", onDeviceReady, false);
 
 

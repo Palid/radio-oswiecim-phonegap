@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="hackerspace.silesia.mobile.radiooswiecim" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="hackerspace.silesia.mobile.radiooswiecim" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Radio Oświęcim</name>
     <description>
         Aplikacja Radia Oświęcim.
@@ -26,5 +26,8 @@
         <icon src="res/icons/android/icon-48-mdpi.png" density="mdpi" />
         <icon src="res/icons/android/icon-72-hdpi.png" density="hdpi" />
         <icon src="res/icons/android/icon-96-xhdpi.png" density="xhdpi" />
+        <feature name="NetworkStatus">
+            <param name="android-package" value="org.apache.cordova.NetworkManager" />
+        </feature>
     </platform>
 </widget>
