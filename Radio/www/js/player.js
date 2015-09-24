@@ -121,11 +121,21 @@
 
     // Play audio
     function playAudio(src) {
-      if (!isOnline()) {
-        $("#internet-modal").modal();
-      } else {
-        createAudio(src);
-      }
+      // Create Media object from src
+      media.loading = true;
+      media.player = new window.Media(src, onSuccess, onError);
+
+      // Play audio
+      media.player.play();
+      media.playing = true;
+      media.loading = false;
+      updateController();
+
+      setTimeout(function() {
+        if (!isOnline()) {
+          $("#internet-modal").modal();
+        }
+      }, 1000);
 
       // Update my_media position every second
       if (!media.timerInterval) {
@@ -153,6 +163,12 @@
 
     ui.connectionModal.on("hide.bs.modal", function () {
       createAudio(AUDIO_URL);
+      // Play audio
+      media.player.pause();
+      media.player.play();
+      media.playing = true;
+      media.loading = false;
+      updateController();
     });
 
     moment.locale("pl");
