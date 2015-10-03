@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.pl.lpu24.radio" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.pl.lpu24.radio" version="1.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>LPU Radio</name>
     <description>
         Aplikacja Puławskiego Radia LPU.
@@ -8,8 +8,8 @@
         <!-- Hackerspace Silesia -->
     <!-- </author> -->
 
-    <author href="http://lpu24.pl/">
-        LPU24
+    <author href="http://lpuradio.pl/">
+        LPURadio
     </author>
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" version="1" />
@@ -23,9 +23,9 @@
     <!-- <allow-intent href="geo:*" /> -->
     <platform name="android">
         <allow-intent href="market:*" />
-        <icon src="res/icons/android/icon-36-ldpi.png" density="ldpi" />
-        <icon src="res/icons/android/icon-48-mdpi.png" density="mdpi" />
-        <icon src="res/icons/android/icon-72-hdpi.png" density="hdpi" />
-        <icon src="res/icons/android/icon-96-xhdpi.png" density="xhdpi" />
+        <icon src="res/icons/android/36.png" density="ldpi" />
+        <icon src="res/icons/android/48.png" density="mdpi" />
+        <icon src="res/icons/android/72.png" density="hdpi" />
+        <icon src="res/icons/android/96.png" density="xhdpi" />
     </platform>
 </widget>

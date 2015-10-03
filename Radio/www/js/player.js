@@ -1,7 +1,6 @@
 (function(window, document, $, moment) {
   "use strict";
 
-  var canOnline = ("onLine" in window.navigator);
   function onDeviceReady() {
 
     var AUDIO_URL = "http://radia2.inten.pl:8054/";
@@ -35,10 +34,9 @@
     };
 
     function isOnline() {
-      if (!canOnline) {
-        return true;
-      }
-      return window.navigator.onLine;
+      var networkState = window.navigator.connection.type;
+
+      return networkState !== window.Connection.NONE;
     }
 
     function updateDate() {
@@ -107,10 +105,10 @@
       media.timerInterval = null;
     }
 
-    function createAudio(src) {
+    function createAudio() {
       // Create Media object from src
       media.loading = true;
-      media.player = new window.Media(src, onSuccess, onError);
+      media.player = new window.Media(AUDIO_URL, onSuccess, onError);
 
       // Play audio
       media.player.play();
@@ -120,20 +118,13 @@
     }
 
     // Play audio
-    function playAudio(src) {
-      // Create Media object from src
-      media.loading = true;
-      media.player = new window.Media(src, onSuccess, onError);
-
-      // Play audio
-      media.player.play();
-      media.playing = true;
-      media.loading = false;
+    function playAudio() {
+      createAudio();
       updateController();
 
-      setTimeout(function() {
+      window.setTimeout(function() {
         if (!isOnline()) {
-          $("#internet-modal").modal();
+          ui.connectionModal.modal();
         }
       }, 1000);
 
@@ -161,19 +152,22 @@
       }
     }
 
-    ui.connectionModal.on("hide.bs.modal", function () {
-      createAudio(AUDIO_URL);
-      // Play audio
-      media.player.pause();
-      media.player.play();
-      media.playing = true;
-      media.loading = false;
-      updateController();
+    ui.connectionModal.on("hide.bs.modal", function() {
+      if (!isOnline()) {
+        window.setTimeout(function() {
+          ui.connectionModal.modal();
+        }, 1000);
+      } else {
+        // Play audio
+        media.player.pause();
+        createAudio();
+        updateController();
+      }
     });
 
     moment.locale("pl");
     updateDate();
-    playAudio(AUDIO_URL);
+    playAudio();
     updateCurrentlyListening();
   }
   document.addEventListener("deviceready", onDeviceReady, false);
