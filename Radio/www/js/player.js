@@ -3,11 +3,18 @@
 
   function onDeviceReady() {
 
-    var AUDIO_URL = "http://radia2.inten.pl:8054/";
+    // Poor man's config files
+    var USE_SHOUTCAST = false;
+    var USE_ICECAST = true;
+
+    var SHOUTCAST_URL = "http://radia2.inten.pl:8054/";
     var LISTENING_STATUS = "http://lpu24.pl/radio/rds.json";
+    var ICECAST_URL = "http://radia2.inten.pl:8984/stream.ogg";
+
 
     // Audio player
     var media = {
+      streamUrl: undefined,
       loading: false,
       playing: false,
       player: undefined,
@@ -23,6 +30,14 @@
         image: ""
       }
     };
+
+    if (USE_ICECAST) {
+      media.streamUrl = ICECAST_URL;
+    }
+
+    if (USE_SHOUTCAST) {
+      media.streamUrl = SHOUTCAST_URL;
+    }
 
     var ui = {
       controller: $(".audio--controller"),
@@ -58,6 +73,7 @@
       ui.controller.toggleClass("glyphicon-play", !isPlaying);
     }
 
+
     function updateCurrentlyListening() {
       $.get(LISTENING_STATUS).done(function(resp) {
         var now = resp.teraz;
@@ -74,7 +90,7 @@
         }
 
       });
-    }
+   }
 
     ui.controller.on("click", function(e) {
       e.preventDefault();
@@ -108,7 +124,7 @@
     function createAudio() {
       // Create Media object from src
       media.loading = true;
-      media.player = new window.Media(AUDIO_URL, onSuccess, onError);
+      media.player = new window.Media(media.streamUrl, onSuccess, onError);
 
       // Play audio
       media.player.play();
