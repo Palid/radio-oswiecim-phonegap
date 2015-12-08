@@ -3,18 +3,12 @@
 
   function onDeviceReady() {
 
-    // Poor man's config files
-    var USE_SHOUTCAST = false;
-    var USE_ICECAST = true;
-
-    var SHOUTCAST_URL = "http://radia2.inten.pl:8054/";
+    var STREAM_URL = "http://radia2.inten.pl:8984/stream.mp3";
     var LISTENING_STATUS = "http://lpu24.pl/radio/rds.json";
-    var ICECAST_URL = "http://radia2.inten.pl:8984/stream.ogg";
-
 
     // Audio player
     var media = {
-      streamUrl: undefined,
+      streamUrl: STREAM_URL,
       loading: false,
       playing: false,
       player: undefined,
@@ -30,14 +24,6 @@
         image: ""
       }
     };
-
-    if (USE_ICECAST) {
-      media.streamUrl = ICECAST_URL;
-    }
-
-    if (USE_SHOUTCAST) {
-      media.streamUrl = SHOUTCAST_URL;
-    }
 
     var ui = {
       controller: $(".audio--controller"),
