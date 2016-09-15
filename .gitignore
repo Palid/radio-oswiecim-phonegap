@@ -58,3 +58,5 @@ platforms/wp8/*.csproj.user
 
 # res
 resources/signing
+
+build.json
