@@ -23,7 +23,7 @@
     "cordova-plugin-media": "^5.0.3",
     "cordova-plugin-network-information": "^2.0.2",
     "jquery": "^2.1.4",
-    "moment": "^2.10.6",
+    "moment": "^2.19.3",
     "webpack": "^4.44.0"
   },
   "scripts": {
