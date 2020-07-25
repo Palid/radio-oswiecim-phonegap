@@ -1,12 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="hackerspace.silesia.mobile.radiooswiecim" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="hackerspace.silesia.mobile.radiooswiecim" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Radio Oświęcim</name>
     <description>
         Aplikacja Radia Oświęcim.
     </description>
-    <!-- <author email="" href="http://hs-silesia.pl/"> -->
-        <!-- Hackerspace Silesia -->
-    <!-- </author> -->
+
 
     <author href="http://hs-silesia.pl/">
         Hackerspace Silesia
@@ -21,6 +19,9 @@
     <!-- <allow-intent href="mailto:*" /> -->
     <!-- <allow-intent href="geo:*" /> -->
     <platform name="android">
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <application android:usesCleartextTraffic="true" />
+        </edit-config>
         <allow-intent href="market:*" />
         <icon src="res/icons/android/icon-36-ldpi.png" density="ldpi" />
         <icon src="res/icons/android/icon-48-mdpi.png" density="mdpi" />

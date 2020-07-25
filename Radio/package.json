@@ -1,0 +1,34 @@
+{
+  "devDependencies": {
+    "cordova-plugin-whitelist": "^1.3.4",
+    "webpack-cli": "^3.3.12"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-network-information": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-media": {}
+    },
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {
+    "bootstrap": "^3.4.1",
+    "bootswatch": "^3.4.1",
+    "copy-webpack-plugin": "^6.0.3",
+    "cordova-android": "^8.1.0",
+    "cordova-plugin-file": "^6.0.2",
+    "cordova-plugin-media": "^5.0.3",
+    "cordova-plugin-network-information": "^2.0.2",
+    "jquery": "^2.1.4",
+    "moment": "^2.10.6",
+    "webpack": "^4.44.0"
+  },
+  "scripts": {
+    "webpack": "webpack",
+    "run-emulator": "webpack && cordova run --emulator",
+    "compile": "webpack && cordova run --emulator"
+  }
+}
